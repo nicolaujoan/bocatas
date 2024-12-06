@@ -1,0 +1,1 @@
+php artisan make:model $1 --migration
