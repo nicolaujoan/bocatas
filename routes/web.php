@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Order\ListOrdersController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -14,14 +15,15 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/pedidos', function () {
-    return Inertia::render('Pedidos');
-})->middleware(['auth', 'verified'])->name('pedidos');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/pedidos', [ListOrdersController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('pedidos');
+
 
 require __DIR__.'/auth.php';

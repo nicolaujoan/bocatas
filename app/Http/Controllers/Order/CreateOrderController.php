@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Order;
 
+use App\Http\Controllers\Controller;
 use App\Domain\OrderStatus;
 use Illuminate\Http\Request;
 use App\Models\Order;
@@ -17,7 +18,7 @@ class CreateOrderController extends Controller
         $order_id = $user_id . $username . $today;
         
 
-        // Create order
+        // Create the order
         $order = Order::create([
             'order_id' => $order_id,
             'user_id' => $user_id,
@@ -29,5 +30,5 @@ class CreateOrderController extends Controller
         return response()->json(['order' => $order], 201);
     }
 
-    // Add more methods as needed (e.g., update, delete, etc.)
+    
 }
