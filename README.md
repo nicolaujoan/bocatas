@@ -6,6 +6,15 @@ Laravel + breeze + inertia (react + ssr) + sqlite
 ➜ npm install && npm run build
 ➜ composer run dev
 
+### Run project
+./util/run.sh
+
+### Test project
+./util/test.sh
+
+### Create a model
+./util/model.sh theModelName
+
 ## Resources
 
 - https://medium.com/@1415sandalanka/how-to-handle-json-data-in-laravel-c4a4e07baa9e
