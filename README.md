@@ -7,13 +7,19 @@ Laravel + breeze + inertia (react + ssr) + sqlite
 ➜ composer run dev
 
 ### Run project
+```bash
 ./util/run.sh
+```
 
 ### Test project
+```bash
 ./util/test.sh
+```
 
 ### Create a model
+```bash
 ./util/model.sh theModelName
+```
 
 ## Resources
 
