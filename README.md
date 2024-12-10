@@ -15,3 +15,5 @@ Laravel + breeze + inertia (react + ssr) + sqlite
 - https://www.linuxbabe.com/mail-server/setting-up-dkim-and-spf
 
 - https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-postfix-as-a-send-only-smtp-server-on-ubuntu-22-04
+
+- https://medium.com/@akhmadshaleh/sending-email-with-laravel-10-and-gmail-49be01c2bc8f

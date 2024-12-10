@@ -6,9 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Domain\OrderStatus;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use Inertia\Inertia;
 
 class CreateOrderController extends Controller
 {
+    public function create(Request $request)
+    {
+        return Inertia::render('NuevoPedido');
+    }
+
     public function store(Request $request)
     {
         // Generate the order id
@@ -16,7 +22,7 @@ class CreateOrderController extends Controller
         $username = auth()->user()->name;
         $today = date("d-m-y");
         $order_id = $user_id . $username . $today;
-        
+
 
         // Create the order
         $order = Order::create([
@@ -30,5 +36,5 @@ class CreateOrderController extends Controller
         return response()->json(['order' => $order], 201);
     }
 
-    
+
 }
