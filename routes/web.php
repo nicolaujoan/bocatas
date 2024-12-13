@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Order\CreateOrderController;
 use App\Http\Controllers\Order\ListOrdersController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -21,9 +22,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// Listar pedidos
 Route::get('/pedidos', [ListOrdersController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('pedidos');
 
+// Crear pedido
+Route::get('/pedidos/create', [CreateOrderController::class, 'create'])
+    ->middleware(['auth', 'verified'])
+    ->name('pedidos/create');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

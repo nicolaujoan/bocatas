@@ -35,8 +35,8 @@ export default function Authenticated({
                                         Pedidos
                                     </NavLink>
                                     <NavLink
-                                        href={route('pedidos')}
-                                        active={route().current('pedidos')}
+                                        href={route('pedidos/create')}
+                                        active={route().current('pedidos/create')}
                                     >
                                         Nuevo Pedido
                                     </NavLink>

@@ -20,8 +20,8 @@ class CreateOrderController extends Controller
         // Generate the order id
         $user_id = auth()->id();
         $username = auth()->user()->name;
-        $today = date("d-m-y");
-        $order_id = $user_id . $username . $today;
+        $time = time();
+        $order_id = $user_id . $username . $time;
 
 
         // Create the order

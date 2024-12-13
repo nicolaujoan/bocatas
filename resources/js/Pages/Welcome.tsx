@@ -52,10 +52,10 @@ export default function Welcome({
                                             Pedidos
                                         </Link>
                                         <Link
-                                            href={route('pedidos')}
+                                            href={route('pedidos/create')}
                                             className="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                                         >
-                                            Pedidos
+                                            Nuevo Pedido
                                         </Link>
                                     </>
 
@@ -71,7 +71,7 @@ export default function Welcome({
                                             href={route('register')}
                                             className="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                                         >
-                                            Register
+                                            Registro
                                         </Link>
                                     </>
                                 )}
