@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->string('order_id')->primary(true);
             $table->unsignedInteger('user_id')->index(true);
-            $table->string('username');
             $table->json('details')->nullable();
             $table->string('status')->index(true);
             $table->string('phone_number')->nullable(true);

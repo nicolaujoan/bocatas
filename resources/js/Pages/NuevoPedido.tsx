@@ -1,13 +1,14 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import CommonLayout from "@/Layouts/Pedidos/CommonLayout";
+import { router } from "@inertiajs/react";
 import { useState } from "react";
 
 export default function NuevoPedido({ }: any) {
 
-    const [fields, setFields] = useState([{ key: "", value: "" }]);
+    const [fields, setFields] = useState([{ key: '', value: '' }]);
 
     const handleAddField = () => {
-        setFields([...fields, { key: "", value: "" }]);
+        setFields([...fields, { key: '', value: '' }]);
     };
 
     const handleRemoveField = (index: number) => {
@@ -23,7 +24,7 @@ export default function NuevoPedido({ }: any) {
     };
 
     const handleSubmit = () => {
-        console.log("Submitted Data:", fields);
+        router.post('store', fields as any);
     };
 
     return (

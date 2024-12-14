@@ -32,4 +32,8 @@ Route::get('/pedidos/create', [CreateOrderController::class, 'create'])
     ->middleware(['auth', 'verified'])
     ->name('pedidos/create');
 
+Route::post('pedidos/store', [CreateOrderController::class, 'store'])
+    ->middleware(['auth', 'verified'])
+    ->name('pedidos/store');
+
 require __DIR__ . '/auth.php';

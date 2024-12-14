@@ -1,15 +1,8 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import CommonLayout from '@/Layouts/Pedidos/CommonLayout';
 import { Head, router } from '@inertiajs/react';
-import { useEffect } from 'react';
-
 
 export default function Pedidos({ pedidos }: any) {
-
-    useEffect(() => {
-        console.log(pedidos);
-    }, [])
-
 
     return (
         <AuthenticatedLayout

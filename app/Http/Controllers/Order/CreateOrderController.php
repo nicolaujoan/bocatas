@@ -17,19 +17,19 @@ class CreateOrderController extends Controller
 
     public function store(Request $request)
     {
+        // get the order from the request data
+        $details = $request->all()[0];
+
         // Generate the order id
         $user_id = auth()->id();
-        $username = auth()->user()->name;
         $time = time();
-        $order_id = $user_id . $username . $time;
-
+        $order_id = sha1($user_id . $time);
 
         // Create the order
         $order = Order::create([
             'order_id' => $order_id,
             'user_id' => $user_id,
-            'username' => $username,
-            'details' => [],
+            'details' => $details,
             'status' => OrderStatus::CREATING
         ]);
 
