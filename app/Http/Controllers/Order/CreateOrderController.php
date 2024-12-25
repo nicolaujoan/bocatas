@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Order;
 
-use App\Http\Controllers\Controller;
 use App\Domain\OrderStatus;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use Inertia\Inertia;
@@ -18,7 +18,7 @@ class CreateOrderController extends Controller
     public function store(Request $request)
     {
         // get the order from the request data
-        $details = $request->all()[0];
+        $details = $request->all();
 
         // Generate the order id
         $user_id = auth()->id();
@@ -26,14 +26,14 @@ class CreateOrderController extends Controller
         $order_id = sha1($user_id . $time);
 
         // Create the order
-        $order = Order::create([
+        Order::create([
             'order_id' => $order_id,
             'user_id' => $user_id,
             'details' => $details,
-            'status' => OrderStatus::CREATING
+            'status' => OrderStatus::CREATED
         ]);
 
-        return response()->json(['order' => $order], 201);
+        return redirect()->route('pedidos.show', ['id' => $order_id]);
     }
 
 

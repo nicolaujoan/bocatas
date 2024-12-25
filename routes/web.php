@@ -36,4 +36,9 @@ Route::post('pedidos/store', [CreateOrderController::class, 'store'])
     ->middleware(['auth', 'verified'])
     ->name('pedidos/store');
 
+// Detalle pedido
+Route::get('/pedidos/{id}', [ListOrdersController::class, 'show'])
+    ->middleware(['auth', 'verified'])
+    ->name('pedidos.show');
+
 require __DIR__ . '/auth.php';

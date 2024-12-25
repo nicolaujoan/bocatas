@@ -17,4 +17,13 @@ class ListOrdersController extends Controller
             'pedidos' => $orders,
         ]);
     }
+
+    public function show($id)
+    {
+        $order = Order::where('order_id', $id)->firstOrFail();
+
+        return Inertia::render('DetallePedido', [
+            'order' => $order,
+        ]);
+    }
 }
