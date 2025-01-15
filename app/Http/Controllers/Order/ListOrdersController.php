@@ -11,7 +11,8 @@ class ListOrdersController extends Controller
 {
     public function index(Request $request)
     {
-        $orders = Order::latest()->take(10)->get();
+        $user_id = auth()->id();
+        $orders = Order::latest()->where('user_id', $user_id)->take(10)->get();
 
         return Inertia::render('Pedidos', [
             'pedidos' => $orders,

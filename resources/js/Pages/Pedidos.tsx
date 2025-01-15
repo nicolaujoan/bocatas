@@ -17,7 +17,7 @@ export default function Pedidos({ pedidos }: any) {
                 {pedidos.length ?
                     <ul>
                         {pedidos.map((pedido: any) => (
-                            <li key={pedido.id}>
+                            <li key={pedido.order_id} id={pedido.order_id} onClick={() => router.visit(`pedidos/${pedido.order_id}`)}>
                                 {pedido.name} - {new Date(pedido.created_at).toLocaleString()}
                             </li>
                         ))}
