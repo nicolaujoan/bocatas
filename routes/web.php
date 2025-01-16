@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Order\CreateOrderController;
 use App\Http\Controllers\Order\ListOrdersController;
+use App\Http\Controllers\Order\EditOrderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -37,8 +38,13 @@ Route::post('pedidos/store', [CreateOrderController::class, 'store'])
     ->name('pedidos/store');
 
 // Detalle pedido
-Route::get('/pedidos/{id}', [ListOrdersController::class, 'show'])
+Route::get('/pedidos/{id}', [EditOrderController::class, 'show'])
     ->middleware(['auth', 'verified'])
     ->name('pedidos.show');
+
+Route::post('/pedidos/{id}', [EditOrderController::class, 'update'])
+    ->middleware(['auth', 'verified'])
+    ->name('pedidos.update');
+
 
 require __DIR__ . '/auth.php';

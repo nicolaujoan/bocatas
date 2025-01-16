@@ -1,5 +1,6 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import CommonLayout from "@/Layouts/Pedidos/CommonLayout";
+import { router } from "@inertiajs/react";
 import { useEffect, useState } from "react";
 
 export default function DetallePedido({ order }: any) {
@@ -23,7 +24,7 @@ export default function DetallePedido({ order }: any) {
     };
 
     const handleSubmit = () => {
-        console.log("actualizar pedido");
+        router.post('update', fields as any);
     };
 
     return (
