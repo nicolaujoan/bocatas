@@ -3,7 +3,6 @@ import CommonLayout from '@/Layouts/Pedidos/CommonLayout';
 import { Head, router } from '@inertiajs/react';
 
 export default function Pedidos({ pedidos }: any) {
-
     return (
         <AuthenticatedLayout
             header={
@@ -14,22 +13,41 @@ export default function Pedidos({ pedidos }: any) {
         >
             <Head title="Pedidos" />
             <CommonLayout>
-                {pedidos.length ?
-                    <ul>
+                {pedidos.length ? (
+                    <ul style={{ cursor: 'pointer' }}>
                         {pedidos.map((pedido: any) => (
-                            <li key={pedido.order_id} id={pedido.order_id} onClick={() => router.visit(`pedidos/${pedido.order_id}`)}>
-                                {pedido.name} - {new Date(pedido.created_at).toLocaleString()}
+                            <li
+                                key={pedido.order_id}
+                                id={pedido.order_id}
+                                onClick={() =>
+                                    router.visit(`pedidos/${pedido.order_id}`)
+                                }
+                            >
+                                {pedido.name} -{' '}
+                                {new Date(pedido.created_at).toLocaleString()}
                             </li>
                         ))}
                     </ul>
-                    : <>
+                ) : (
+                    <>
                         Todavía no has hecho ningún pedido!
-                        <button onClick={() => router.visit('pedidos/create', { method: 'get' })} style={{ border: '1px solid black', marginLeft: '1rem', padding: 4, borderRadius: 25 }}>
+                        <button
+                            onClick={() =>
+                                router.visit('pedidos/create', {
+                                    method: 'get',
+                                })
+                            }
+                            style={{
+                                border: '1px solid black',
+                                marginLeft: '1rem',
+                                padding: 4,
+                                borderRadius: 25,
+                            }}
+                        >
                             <b>Crear pedido</b>
                         </button>
                     </>
-
-                }
+                )}
             </CommonLayout>
         </AuthenticatedLayout>
     );

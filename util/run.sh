@@ -1,1 +1,1 @@
-npm run build && php artisan serve
+npm run build && composer run dev
