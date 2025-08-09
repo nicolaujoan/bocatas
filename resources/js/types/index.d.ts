@@ -1,6 +1,7 @@
 import { Config } from 'ziggy-js';
 
 export interface User {
+    team_id: string;
     id: number;
     name: string;
     email: string;

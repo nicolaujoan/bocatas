@@ -6,12 +6,18 @@ import GuestLayout from '@/Layouts/GuestLayout';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { FormEventHandler } from 'react';
 
-export default function Register() {
+type Team = {
+    id: number;
+    name: string;
+};
+
+export default function Register({ teams }: { teams: Team[] }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
         email: '',
         password: '',
         password_confirmation: '',
+        team_id: '',
     });
 
     const submit: FormEventHandler = (e) => {
@@ -28,7 +34,7 @@ export default function Register() {
 
             <form onSubmit={submit}>
                 <div>
-                    <InputLabel htmlFor="name" value="Name" />
+                    <InputLabel htmlFor="name" value="Nombre" />
 
                     <TextInput
                         id="name"
@@ -61,6 +67,29 @@ export default function Register() {
                     <InputError message={errors.email} className="mt-2" />
                 </div>
 
+                {/* New Team Select */}
+                <div className="mt-4">
+                    <InputLabel htmlFor="team_id" value="Equipo" />
+
+                    <select
+                        id="team_id"
+                        name="team_id"
+                        value={data.team_id}
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                        onChange={(e) => setData('team_id', e.target.value)}
+                        required
+                    >
+                        <option value="">Selecciona un equipo</option>
+                        {teams.map((team) => (
+                            <option key={team.id} value={team.id}>
+                                {team.name}
+                            </option>
+                        ))}
+                    </select>
+
+                    <InputError message={errors.team_id} className="mt-2" />
+                </div>
+
                 <div className="mt-4">
                     <InputLabel htmlFor="password" value="Password" />
 
@@ -81,7 +110,7 @@ export default function Register() {
                 <div className="mt-4">
                     <InputLabel
                         htmlFor="password_confirmation"
-                        value="Confirm Password"
+                        value="Confirmar Password"
                     />
 
                     <TextInput

@@ -25,12 +25,15 @@ class CreateOrderController extends Controller
         $time = time();
         $order_id = sha1($user_id . $time);
 
+        \Log::info('Creating order with team: ' . auth()->user()->team_id);
+
         // Create the order
         Order::create([
             'order_id' => $order_id,
             'user_id' => $user_id,
             'details' => $details,
-            'status' => OrderStatus::CREATED
+            'status' => OrderStatus::CREATED,
+            'team_id' => auth()->user()->team_id,
         ]);
 
         return redirect()->route('pedidos.show', ['id' => $order_id]);
