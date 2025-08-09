@@ -3,6 +3,7 @@ import CommonLayout from '@/Layouts/Pedidos/CommonLayout';
 import { Head, router } from '@inertiajs/react';
 
 export default function Pedidos({ pedidos }: any) {
+    console.log('pedidos:', pedidos);
     return (
         <AuthenticatedLayout
             header={

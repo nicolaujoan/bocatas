@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use Illuminate\Support\Facades\DB;
 
 class EditOrderController extends Controller
 {
@@ -14,13 +15,16 @@ class EditOrderController extends Controller
     $orderId = $request->input('order_id');
     $details = $request->input('details');
 
+    if (!is_string($details)) {
+        $details = json_encode($details);
+    }
+
     \Log::info('Updating order ID: ' . $orderId);
-    \Log::info('Details:', $details);
+    \Log::info('Details JSON: ' . $details);
 
-    $order = Order::where('order_id', $orderId)->firstOrFail();
-
-    $order->details = $details; // Assuming $details is array, and cast to array is set in model
-    $order->save();
+    DB::table('orders')
+        ->where('order_id', $orderId)
+        ->update(['details' => $details]);
 
     return redirect()->route('pedidos.show', $orderId)
         ->with('success', 'Pedido actualizado correctamente.');

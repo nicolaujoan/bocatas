@@ -20,7 +20,7 @@ export default function DetallePedido({ order }: any) {
             };
         };
     };
-    console.log('props flash:', props.flash);
+
     const successMessage = props.flash?.success as string | undefined;
 
     const [fields, setFields] = useState(order.details);
@@ -42,6 +42,7 @@ export default function DetallePedido({ order }: any) {
     };
 
     const handleSubmit = () => {
+        console.log(order);
         router.post('update', {
             order_id: order.order_id,
             details: fields,
