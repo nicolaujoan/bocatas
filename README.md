@@ -33,6 +33,8 @@ Laravel + breeze + inertia (react) + sqlite
 
 - https://medium.com/@akhmadshaleh/sending-email-with-laravel-10-and-gmail-49be01c2bc8f
 
+- Generate whatsapp link: https://faq.whatsapp.com/5913398998672934
+
 ## CICD
 
 Setting up CI/CD for a Laravel project on a remote server is a great way to automate deployments and streamline your development workflow. Here’s a step-by-step guide on how you can approach this.
