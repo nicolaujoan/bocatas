@@ -1,6 +1,6 @@
 ## Technologies used + installation
 
-Laravel + breeze + inertia (react) + sqlite
+Laravel + breeze + inertia (react) + sqlite + tailwindcss
 
 ➜ cd bocatas
 ➜ npm install && npm run build
