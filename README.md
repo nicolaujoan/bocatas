@@ -196,3 +196,17 @@ Notifications:
 Configure notifications for successful or failed deployments via email or Slack using GitHub Actions' built-in actions or third-party integrations.
 Conclusion
 By following this approach, you’ll have a fully automated CI/CD pipeline for your Laravel + Inertia.js + React project, integrating with GitHub Actions and deploying to a remote server. This will help ensure fast, reliable, and automated deployments, which is especially beneficial for larger teams and more complex projects.
+
+### FEATURES:
+
+[] Campo num_envio para generar el link de whatsapp
+
+[] Boton para generar el link de whatsapp (copy to clipboard)
+
+[] Navbar para mobile de pedidos y nuevo pedido no se ve
+
+[] Mejorar feedback de actualización del pedido
+
+[] Hacer una landing page y cambiar los logos por uno de bocatas
+
+[] Preparar un CI/CD con docker en el vps con push a main e incluir algo de testing
