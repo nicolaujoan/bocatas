@@ -11,6 +11,11 @@ interface PageProps {
     // Add any other props you're using from the backend here
 }
 
+enum COPIED_TYPE {
+    PEDIDO = 'pedido',
+    WHATSAPP = 'whatsapp',
+}
+
 export default function DetallePedido({ order }: any) {
     const { props } = usePage() as {
         props: {
@@ -24,6 +29,13 @@ export default function DetallePedido({ order }: any) {
     const successMessage = props.flash?.success as string | undefined;
 
     const [fields, setFields] = useState(order.details);
+
+    const [copied, setCopied] = useState<string | null>(null);
+
+    const triggerCopyEffect = (type: string) => {
+        setCopied(type);
+        setTimeout(() => setCopied(null), 500); // remove after 0.5s
+    };
 
     const handleAddField = () => {
         setFields([...fields, { key: '', value: '' }]);
@@ -49,6 +61,22 @@ export default function DetallePedido({ order }: any) {
         });
     };
 
+    const handleCopyPedido = () => {
+        console.log('Copying order...');
+        triggerCopyEffect(COPIED_TYPE.PEDIDO);
+        navigator.clipboard.writeText(JSON.stringify(order.details, null, 2));
+    };
+
+    const handleCopyToWhatsapp = () => {
+        console.log('Copying order to WhatsApp...');
+        triggerCopyEffect(COPIED_TYPE.WHATSAPP);
+        navigator.clipboard.writeText(JSON.stringify(order.details, null, 2));
+    };
+
+    const handleDeletePedido = () => {
+        console.log('Deleting order...');
+    };
+
     return (
         <AuthenticatedLayout
             header={
@@ -61,6 +89,31 @@ export default function DetallePedido({ order }: any) {
                 <div className="text-green-600">{successMessage}</div>
             )}
             <CommonLayout>
+                <div className="m-4 flex justify-end space-y-4">
+                    <div className="flex flex-col space-y-2 sm:flex-row sm:items-center sm:space-x-2 sm:space-y-0">
+                        <button
+                            type="button"
+                            onClick={handleCopyPedido}
+                            className={`w-full rounded bg-blue-500 px-4 py-2 text-white transition-all duration-500 ease-out sm:w-auto ${copied === COPIED_TYPE.PEDIDO ? 'ring-8 ring-white ring-opacity-100' : 'ring-0'}`}
+                        >
+                            Copiar pedido
+                        </button>
+                        <button
+                            type="button"
+                            onClick={handleCopyToWhatsapp}
+                            className={`w-full rounded bg-green-500 px-4 py-2 text-white transition-all duration-500 ease-out sm:w-auto ${copied === COPIED_TYPE.WHATSAPP ? 'ring-8 ring-white ring-opacity-100' : 'ring-0'}`}
+                        >
+                            Copiar a WhatsApp
+                        </button>
+                        <button
+                            type="button"
+                            onClick={handleDeletePedido}
+                            className="w-full rounded bg-red-500 px-4 py-2 text-white sm:w-auto"
+                        >
+                            Eliminar pedido
+                        </button>
+                    </div>
+                </div>
                 <div className="space-y-4">
                     {fields.map((field: any, index: number) => (
                         <div
