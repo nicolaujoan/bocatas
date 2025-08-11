@@ -209,4 +209,5 @@ By following this approach, you’ll have a fully automated CI/CD pipeline for y
 
 [] Hacer una landing page y cambiar los logos por uno de bocatas
 
-[] Preparar un CI/CD con docker en el vps con push a main e incluir algo de testing
+[] Preparar un CI/CD con docker en el vps con push a main e incluir algo de testing 
+https://blog.danstorm.dev/blog/managing-laravel-queues-efficiently-with-redis-frankenphp-and-docker 
